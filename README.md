@@ -9,9 +9,9 @@
 <img src="https://github.com/simplegr33n/pocketlaw-evidence-act/blob/master/screenshots/phone3.jpg" width="144">
 <img src="https://github.com/simplegr33n/pocketlaw-evidence-act/blob/master/screenshots/phone2.jpg" width="144">
 
-<img src="https://github.com/simplegr33n/pocketlaw-evidence-act/blob/master/screenshots/phone2.jpg" width="160">
-<img src="https://github.com/simplegr33n/pocketlaw-evidence-act/blob/master/screenshots/phone1.jpg" width="160">
-<img src="https://github.com/simplegr33n/pocketlaw-evidence-act/blob/master/screenshots/phone3.jpg" width="160">
+<img src="https://github.com/simplegr33n/pocketlaw-evidence-act/blob/master/screenshots/tablet2.jpg" width="160">
+<img src="https://github.com/simplegr33n/pocketlaw-evidence-act/blob/master/screenshots/tablet1.jpg" width="160">
+<img src="https://github.com/simplegr33n/pocketlaw-evidence-act/blob/master/screenshots/tablet3.jpg" width="160">
 
 
 ## Todo
