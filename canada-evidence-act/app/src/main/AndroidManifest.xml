@@ -1,0 +1,44 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.pocketlaw.canada_evidence_act">
+
+    <!--
+    TODO: add again for update function/debugging
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    -->
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name="org.pocketlaw.canada_evidence_act.ActivityMain"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="org.pocketlaw.canada_evidence_act.ActivityDebug"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="org.pocketlaw.canada_evidence_act.ActivityPopulate"
+            android:screenOrientation="portrait" />
+
+
+    </application>
+
+</manifest>
