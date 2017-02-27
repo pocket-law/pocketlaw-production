@@ -14,8 +14,6 @@
 <img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/canada-evidence-act/screenshots/tablet3.jpg" width="160">
 
 
-https://github.com/simplegr33n/pocketlaw-production/blob/master/canada-evidence-act/screenshots/phone1.jpg
-
 
 
 
