@@ -1,4 +1,4 @@
-package org.pocketlaw.immigration_refugee_protection_act;
+package org.pocketlaw.irpa;
 
 import android.content.Context;
 import android.util.Log;

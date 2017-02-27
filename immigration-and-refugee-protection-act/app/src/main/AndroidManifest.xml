@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.pocketlaw.immigration_refugee_protection_act">
+    package="org.pocketlaw.irpa">
 
     <!--
     TODO: add again for update function/debugging
@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="org.pocketlaw.immigration_refugee_protection_act.ActivityMain"
+            android:name="org.pocketlaw.irpa.ActivityMain"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -31,12 +31,12 @@
         </activity>
 
         <activity
-            android:name="org.pocketlaw.immigration_refugee_protection_act.ActivityDebug"
+            android:name="org.pocketlaw.irpa.ActivityDebug"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name="org.pocketlaw.immigration_refugee_protection_act.ActivityPopulate"
+            android:name="org.pocketlaw.irpa.ActivityPopulate"
             android:screenOrientation="portrait" />
 
 

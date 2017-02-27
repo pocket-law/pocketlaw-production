@@ -1,4 +1,4 @@
-package org.pocketlaw.immigration_refugee_protection_act;
+package org.pocketlaw.irpa;
 
 /**
  * Created by gcgol on 01/06/2017.

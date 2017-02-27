@@ -1,4 +1,4 @@
-package org.pocketlaw.immigration_refugee_protection_act;
+package org.pocketlaw.irpa;
 
 import android.content.Intent;
 import android.os.AsyncTask;
