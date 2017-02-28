@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/brandRed"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PocketLaw"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="56dp"
+        android:textStyle="bold" />
+
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/leaf"
+            android:tint="@color/brandBlue"
+            android:layout_alignParentTop="true" />
+
+        <ProgressBar
+            android:layout_centerInParent="true"
+            android:paddingTop="20dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="40dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Populating database..."
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:id="@+id/textView4" />
+
+</LinearLayout>

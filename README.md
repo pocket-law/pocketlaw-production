@@ -10,6 +10,12 @@
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="288">](https://play.google.com/store/apps/details?id=org.pocketlaw.irpa)
 
+# <img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/privacy-act/screenshots/logos/logo.png" width="40"> <i>Privacy Act</i>
+
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="288">](https://play.google.com/store/apps/details?id=org.pocketlaw.privacy_act)
+
+
+
 
 
 
