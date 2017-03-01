@@ -3,7 +3,7 @@ PocketLaw is an open source law reference project aimed at making the law of Can
 
 This is a repository to store the in production versions of PocketLaw Android apps. 
 
-If you'd like to contribute, check out the PocketLaw ![Debug Repository](https://github.com/simplegr33n/pocketlaw-debug) for the latest version of the app.
+If you'd like to contribute, check out the PocketLaw [Debug Repository](https://github.com/simplegr33n/pocketlaw-debug) for the latest version of the app.
 
 Otherwise, you can access Play store links for the in production versions below.
 
