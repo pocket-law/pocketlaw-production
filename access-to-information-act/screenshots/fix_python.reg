@@ -1,0 +1,21 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Python]
+
+[HKEY_CURRENT_USER\Software\Python\Pythoncore]
+
+[HKEY_CURRENT_USER\Software\Python\Pythoncore\2.6]
+
+[HKEY_CURRENT_USER\Software\Python\Pythoncore\2.6\InstallPath]
+@="C:\\python26"
+
+[HKEY_CURRENT_USER\Software\Python\Pythoncore\2.6\PythonPath]
+@="C:\\python26;C:\\python26\\Lib\\;C:\\python26\\DLLs\\"
+ 
+[HKEY_CURRENT_USER\Software\Python\Pythoncore\2.7]
+
+[HKEY_CURRENT_USER\Software\Python\Pythoncore\2.7\InstallPath]
+@="C:\\python27"
+
+[HKEY_CURRENT_USER\Software\Python\Pythoncore\2.7\PythonPath]
+@="C:\\python27;C:\\python27\\Lib\\;C:\\python27\\DLLs\\"
