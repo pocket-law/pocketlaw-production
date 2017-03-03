@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Youth Criminal Justice Act</string>
+    <string name="act_name">Y-1.5</string>
+
+    <string name="database_name">y1_5</string>
+</resources>

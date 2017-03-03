@@ -1,6 +1,11 @@
 ## PocketLaw
 PocketLaw is an open source law reference project aimed at making the law of Canada more accessible and understandable.
 
+<img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/income-tax-act/screenshots/phone1.jpg" width="144">
+<img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/income-tax-act/screenshots/screenshot3.jpg" width="144">
+<img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/income-tax-act/screenshots/screenshot2.jpg" width="144">
+<img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/income-tax-act/screenshots/screenshot1.jpg" width="144">
+
 This is a repository to store the in production versions of PocketLaw Android apps. 
 
 If you'd like to contribute, check out the PocketLaw [Debug Repository](https://github.com/simplegr33n/pocketlaw-debug) for the latest version of the app.
@@ -34,7 +39,8 @@ Otherwise, you can access Play store links for the in production versions below.
 # <img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/privacy-act/screenshots/logos/logo.png" width="40"> <i>Privacy Act</i>
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="288">](https://play.google.com/store/apps/details?id=org.pocketlaw.privacy_act)
 
-
+# <img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/youth-criminal-justice-act/screenshots/logos/logo.png" width="40"> <i>Youth Criminal Justice Act</i>
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="288">](https://play.google.com/store/apps/details?id=org.pocketlaw.youth_criminal_justice_act)
 
 
 
