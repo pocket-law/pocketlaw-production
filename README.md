@@ -15,6 +15,9 @@ Otherwise, you can access Play store links for the in production versions below.
 # <img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/access-to-information-act/screenshots/logos/logo.png" width="40"> <i>Access to Information Act</i>
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="288">](https://play.google.com/store/apps/details?id=org.pocketlaw.access_to_information_act)
 
+# <img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/canada-elections-act/screenshots/logos/logo.png" width="40"> <i>Canada Elections Act</i>
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="288">](https://play.google.com/store/apps/details?id=org.pocketlaw.canada_elections_act)
+
 # <img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/canada-evidence-act/screenshots/logos/logo.png" width="40"> <i>Canada Evidence Act</i>
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="288">](https://play.google.com/store/apps/details?id=org.pocketlaw.canada_evidence_act)
 
