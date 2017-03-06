@@ -20,11 +20,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String TAG = "DbHelper";
 
     // Database Info
-    private static final String DATABASE_NAME = ActivityMain.DATABASE_NAME;
     private static final int DATABASE_VERSION = 1;
-
-    //Table Names
-    private static final String TABLE_NAME = ActivityMain.DATABASE_NAME; // TODO: change to table name (will require other changes for this differentiation)
 
     //Table Columns
     private static final String _ID = "_id";
@@ -34,6 +30,8 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String PINPOINT = "pinpoint";
 
     private static DbHelper mDbHelper;
+
+    private String TABLE_NAME;
 
 
     public static synchronized DbHelper getInstance(Context context) {
@@ -52,7 +50,9 @@ public class DbHelper extends SQLiteOpenHelper {
      * Make a call to the static method "getInstance()" instead.
      */
     private DbHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, context.getString(R.string.database_name), null, DATABASE_VERSION);
+
+        TABLE_NAME = context.getString(R.string.database_name);
     }
 
    /*
@@ -73,6 +73,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 PINPOINT + " TEXT" +
                 ")";
         db.execSQL(CREATE_USERDETAIL_TABLE);
+
+        // TODO: change to table name (will require other changes for this differentiation)
 
     }
 
@@ -171,7 +173,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
         List<Section> sectionDetail = new ArrayList<>();
 
-        // TODO: Display section 849
         String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_NAME + " WHERE type = '0'";
 
         SQLiteDatabase db = getReadableDatabase();
@@ -200,9 +201,26 @@ public class DbHelper extends SQLiteOpenHelper {
             }
         }
 
-        // Add after section parts
+//        // Add after section parts
+
+//        Section schedOneAdd = new Section(-3, 737, "schedule", "S", "Schedule");
+//        sectionDetail.add(schedOneAdd);
+
+//        Section schedTwoAdd = new Section(-3, 737, "schedule_ii", "S", "Schedule II");
+//        sectionDetail.add(schedTwoAdd);
+//
+//        Section formsAdd = new Section(-3, 737, "forms", "F", "Forms");
+//        sectionDetail.add(formsAdd);
+////
+//        Section schedThreeAdd = new Section(-3, 737, "schedule_iii", "S", "Schedule III");
+//        sectionDetail.add(schedThreeAdd);
+//
+//        Section schedFourAdd = new Section(-3, 737, "schedule_iv", "S", "Schedule IV");
+//        sectionDetail.add(schedFourAdd);
+
         Section relatedProvsAdd = new Section(-3, 737, "related_provs", "RP", "Related Provisions");
         sectionDetail.add(relatedProvsAdd);
+
         Section amendmentsAdd = new Section(-3, 737, "amendments_nif", "ANIF", "Amendments Not In Force");
         sectionDetail.add(amendmentsAdd);
 
@@ -269,6 +287,5 @@ public class DbHelper extends SQLiteOpenHelper {
         return sectionDetail;
 
     }
-
 
 }
