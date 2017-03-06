@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("ca.ggolda.reference_criminal_code", appContext.getPackageName());
+        assertEquals("org.pocketlaw.canada_evidence_act", appContext.getPackageName());
     }
 }

@@ -2,9 +2,9 @@ package ca.ggolda.reference_criminal_code;
 
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,12 +27,15 @@ public class ActivityDebug extends AppCompatActivity {
 
     Button btn_next, btn_db, btn_exp, btn_imp_two, btn_init;
     DbHelper dbHelper;
+    private String DATABASE_NAME;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_debug);
+
+        DATABASE_NAME = getString(R.string.database_name);
 
 
         dbHelper = DbHelper.getInstance(getApplicationContext());
@@ -71,7 +74,6 @@ public class ActivityDebug extends AppCompatActivity {
             public void onClick(View v) {
 
                 Toast.makeText(ActivityDebug.this, "CLICKED!", Toast.LENGTH_SHORT).show();
-
                 exportDB();
 
             }
@@ -110,16 +112,25 @@ public class ActivityDebug extends AppCompatActivity {
 
     private void exportDB() {
 
+        Log.e("Export DB", "PackageName: "+ getApplicationContext().getPackageName());
+        Log.e("Export DB", "DatabasePath: "+ getApplicationContext().getDatabasePath(DATABASE_NAME).getPath());
+
         // SD card
         File sd = Environment.getExternalStorageDirectory();
         File data = Environment.getDataDirectory();
         FileChannel source = null;
         FileChannel destination = null;
-        String currentDBPath = "/data/" + "ca.ggolda.reference_criminal_code" + "/databases/CriminalCode";
-        String backupDBPath = "/tmp/CriminalCode";
+
+        String currentDBPath = "/data/" + getApplicationContext().getPackageName() + "/databases/" + DATABASE_NAME;
+
+        String backupDBPath = "/tmp/" + DATABASE_NAME;
         File currentDB = new File(data, currentDBPath);
         File backupDB = new File(sd, backupDBPath);
         try {
+
+
+            //TODO: REMEMBER TO CHANGE PERMISSIONS
+            //TODO: THIS HAS STUMPED YOU TWICE NOW
 
             source = new FileInputStream(currentDB).getChannel();
 
@@ -127,10 +138,11 @@ public class ActivityDebug extends AppCompatActivity {
 
             destination.transferFrom(source, 0, source.size());
 
+
             source.close();
             destination.close();
 
-            Toast.makeText(ActivityDebug.this, "DB Exported!", Toast.LENGTH_LONG).show();
+            Toast.makeText(ActivityDebug.this, "exported successfully!", Toast.LENGTH_LONG).show();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -140,9 +152,9 @@ public class ActivityDebug extends AppCompatActivity {
     private void importDB() throws IOException {
 
         //Open your assets db as the input stream
-        InputStream in = getApplicationContext().getAssets().open("CriminalCode");
+        InputStream in = getApplicationContext().getAssets().open(DATABASE_NAME);
 
-        String destPath = getApplicationContext().getDatabasePath("CriminalCode").getPath();
+        String destPath = getApplicationContext().getDatabasePath(DATABASE_NAME).getPath();
 
         // Create empty file at destination path
         File f = new File(destPath);

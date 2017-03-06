@@ -24,6 +24,7 @@ public class AdapterHeading extends ArrayAdapter<Section> {
     private ListView listviewSection;
     private ListView listviewQuery;
     private WebView webView;
+    private TextView results;
 
 
     public AdapterHeading(Context context, int resource, List<Section> objects) {
@@ -42,17 +43,19 @@ public class AdapterHeading extends ArrayAdapter<Section> {
         final Section current = getItem(position);
 
         LinearLayout headingLayout = (LinearLayout) convertView.findViewById(R.id.headingLayout);
-        TextView headingOne = (TextView) convertView.findViewById(R.id.heading);
-        TextView sectionOne = (TextView) convertView.findViewById(R.id.section);
+        TextView heading = (TextView) convertView.findViewById(R.id.heading);
+        TextView section = (TextView) convertView.findViewById(R.id.section);
 
         // Get listViews and webView from main activity
         listviewSection = (ListView) ((ActivityMain) mContext).findViewById(R.id.listview_section);
         listviewQuery = (ListView) ((ActivityMain) mContext).findViewById(R.id.listview_query);
         webView = (WebView) ((ActivityMain) mContext).findViewById(R.id.webview);
 
+        results = (TextView) ((ActivityMain) mContext).findViewById(R.id.total_results);
+
         // Set section and heading text
-        headingOne.setText("" + current.getFulltext());
-        sectionOne.setText("" + current.getSection());
+        heading.setText("" + current.getFulltext());
+        section.setText("" + current.getSection());
 
 
         //Change background color based on heading type
@@ -62,6 +65,8 @@ public class AdapterHeading extends ArrayAdapter<Section> {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    results.setText("");
+
                     listviewQuery.setVisibility(View.GONE);
                     webView.setVisibility(View.GONE);
                     listviewSection.setVisibility(View.VISIBLE);
@@ -70,104 +75,187 @@ public class AdapterHeading extends ArrayAdapter<Section> {
                     ActivityMain.partsHideShow();
                 }
             });
-            headingOne.setBackgroundColor(Color.parseColor("#8C292e34"));
-            sectionOne.setBackgroundColor(Color.parseColor("#8C292e34"));
+            heading.setBackgroundColor(Color.parseColor("#8C292e34"));
+            section.setBackgroundColor(Color.parseColor("#8C292e34"));
         }
 
         if (current.getPinpoint().equals("level2")) {
 
-
-            headingOne.setBackgroundColor(Color.parseColor("#00FFFFFF"));
-            sectionOne.setBackgroundColor(Color.parseColor("#00FFFFFF"));
-
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    results.setText("");
 
                     listviewQuery.setVisibility(View.GONE);
-
                     webView.setVisibility(View.GONE);
+                    listviewSection.setVisibility(View.VISIBLE);
                     // Set section listview on basis of TOC selection
                     listviewSection.setSelection(current.getID() - 1);
-                    listviewSection.setVisibility(View.VISIBLE);
                     ActivityMain.partsHideShow();
                 }
             });
-
-
+            heading.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+            section.setBackgroundColor(Color.parseColor("#00FFFFFF"));
         }
 
         if (current.getPinpoint().equals("level3")) {
 
-            listviewQuery.setVisibility(View.GONE);
-            // Set section listview on basis of TOC selection
-            listviewSection.setVisibility(View.VISIBLE);
-
-            webView.setVisibility(View.GONE);
-
-            headingOne.setBackgroundColor(Color.parseColor("#12FFFFFF"));
-            sectionOne.setBackgroundColor(Color.parseColor("#12FFFFFF"));
-
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    results.setText("");
 
+                    listviewQuery.setVisibility(View.GONE);
+                    webView.setVisibility(View.GONE);
+                    listviewSection.setVisibility(View.VISIBLE);
                     // Set section listview on basis of TOC selection
                     listviewSection.setSelection(current.getID() - 1);
                     ActivityMain.partsHideShow();
                 }
             });
-
+            heading.setBackgroundColor(Color.parseColor("#12FFFFFF"));
+            section.setBackgroundColor(Color.parseColor("#12FFFFFF"));
         }
 
-        if (current.getPinpoint().equals("schedules")) {
-            headingOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
-            sectionOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+        if (current.getPinpoint().equals("level4")) {
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    results.setText("");
+
+                    listviewQuery.setVisibility(View.GONE);
+                    webView.setVisibility(View.GONE);
+                    listviewSection.setVisibility(View.VISIBLE);
+                    // Set section listview on basis of TOC selection
+                    listviewSection.setSelection(current.getID() - 1);
+                    ActivityMain.partsHideShow();
+                }
+            });
+            heading.setBackgroundColor(Color.parseColor("#12FFFFFF"));
+            section.setBackgroundColor(Color.parseColor("#12FFFFFF"));
+        }
+
+
+
+        if (current.getPinpoint().equals("schedule")) {
+            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
 
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
+                    results.setText("");
+
                     listviewQuery.setVisibility(View.GONE);
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
-                    webView.loadUrl("file:///android_res/raw/schedules.html");
+                    webView.loadUrl("file:///android_res/raw/schedule.html");
                     webView.setVisibility(View.VISIBLE);
                     ActivityMain.partsHideShow();
                 }
             });
         }
 
-        if (current.getPinpoint().equals("forms")) {
-            headingOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
-            sectionOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+        if (current.getPinpoint().equals("schedule_i")) {
+            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
 
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
+                    results.setText("");
+
                     listviewQuery.setVisibility(View.GONE);
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
-                    webView.loadUrl("file:///android_res/raw/forms.html");
+                    webView.loadUrl("file:///android_res/raw/schedule_i.html");
                     webView.setVisibility(View.VISIBLE);
                     ActivityMain.partsHideShow();
                 }
             });
         }
+
+
+        if (current.getPinpoint().equals("schedule_ii")) {
+            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    results.setText("");
+
+                    listviewQuery.setVisibility(View.GONE);
+
+                    // Set section listview on basis of TOC selection
+                    listviewSection.setVisibility(View.GONE);
+                    webView.loadUrl("file:///android_res/raw/schedule_ii.html");
+                    webView.setVisibility(View.VISIBLE);
+                    ActivityMain.partsHideShow();
+                }
+            });
+        }
+
+        if (current.getPinpoint().equals("schedule_iii")) {
+            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    results.setText("");
+
+                    listviewQuery.setVisibility(View.GONE);
+
+                    // Set section listview on basis of TOC selection
+                    listviewSection.setVisibility(View.GONE);
+                    webView.loadUrl("file:///android_res/raw/schedule_iii.html");
+                    webView.setVisibility(View.VISIBLE);
+                    ActivityMain.partsHideShow();
+                }
+            });
+        }
+
+        if (current.getPinpoint().equals("schedule_iv")) {
+            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    results.setText("");
+
+                    listviewQuery.setVisibility(View.GONE);
+
+                    // Set section listview on basis of TOC selection
+                    listviewSection.setVisibility(View.GONE);
+                    webView.loadUrl("file:///android_res/raw/schedule_iii.html");
+                    webView.setVisibility(View.VISIBLE);
+                    ActivityMain.partsHideShow();
+                }
+            });
+        }
+
 
         if (current.getPinpoint().equals("related_provs")) {
-            headingOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
-            sectionOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
 
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                    listviewQuery.setVisibility(View.GONE);
+                    results.setText("");
 
+                    listviewQuery.setVisibility(View.GONE);
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
@@ -179,24 +267,27 @@ public class AdapterHeading extends ArrayAdapter<Section> {
         }
 
         if (current.getPinpoint().equals("amendments_nif")) {
-            headingOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
-            sectionOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
 
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
+                    results.setText("");
+
                     listviewQuery.setVisibility(View.GONE);
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
-                    webView.setVisibility(View.VISIBLE);
                     webView.loadUrl("file:///android_res/raw/amendments_nif.html");
+                    webView.setVisibility(View.VISIBLE);
                     ActivityMain.partsHideShow();
                 }
             });
-
         }
+
+
 
         return convertView;
 
