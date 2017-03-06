@@ -15,7 +15,7 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:background="#FF0000"
-        android:text="CCC Test Mode"
+        android:text="PocketLaw Debug"
         android:textSize="40sp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp" />
@@ -49,15 +49,7 @@
             android:layout_margin="2dp"/>
 
 
-        <Button
-            android:id="@+id/btn_imp_two"
-            android:layout_width="200dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="20dp"
-            android:background="#605f33"
-            android:text="Imp"
-            android:textColor="#ffffff"
-            android:layout_margin="2dp"/>
+
 
         <Button
             android:id="@+id/btn_exp"
@@ -69,7 +61,21 @@
             android:textColor="#ffffff"
             android:layout_margin="2dp"/>
 
+<!-- TODO: consider removing these two buttons, I dunno what they do
+           -->
         <Button
+            android:visibility="gone"
+            android:id="@+id/btn_imp_two"
+            android:layout_width="200dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="20dp"
+            android:background="#605f33"
+            android:text="Imp"
+            android:textColor="#ffffff"
+            android:layout_margin="2dp"/>
+
+        <Button
+            android:visibility="gone"
             android:id="@+id/btn_init"
             android:layout_width="200dp"
             android:layout_height="64dp"
@@ -78,6 +84,8 @@
             android:text="Init"
             android:textColor="#ffffff"
             android:layout_margin="2dp"/>
+
+
 
     </LinearLayout>
 </LinearLayout>

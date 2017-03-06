@@ -20,13 +20,9 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String TAG = "DbHelper";
 
     // Database Info
-    private static final String DATABASE_NAME = "i2_5";
     private static final int DATABASE_VERSION = 1;
 
-    //Table Names
-    private static final String TABLE_EVIDENCE_ACT = "i2_5";
-
-    // Evidence Act Table Columns
+    //Table Columns
     private static final String _ID = "_id";
     private static final String FULLTEXT = "fulltext";
     private static final String TYPE = "type";
@@ -34,6 +30,8 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String PINPOINT = "pinpoint";
 
     private static DbHelper mDbHelper;
+
+    private String TABLE_NAME;
 
 
     public static synchronized DbHelper getInstance(Context context) {
@@ -52,7 +50,9 @@ public class DbHelper extends SQLiteOpenHelper {
      * Make a call to the static method "getInstance()" instead.
      */
     private DbHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, context.getString(R.string.database_name), null, DATABASE_VERSION);
+
+        TABLE_NAME = context.getString(R.string.database_name);
     }
 
    /*
@@ -64,7 +64,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
 
-        String CREATE_USERDETAIL_TABLE = "CREATE TABLE " + TABLE_EVIDENCE_ACT +
+        String CREATE_USERDETAIL_TABLE = "CREATE TABLE " + TABLE_NAME +
                 "(" +
                 _ID + " INTEGER PRIMARY KEY ," +
                 FULLTEXT + " TEXT, " +
@@ -74,7 +74,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 ")";
         db.execSQL(CREATE_USERDETAIL_TABLE);
 
-
+        // TODO: change to table name (will require other changes for this differentiation)
 
     }
 
@@ -88,7 +88,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion != newVersion) {
             // Simplest implementation is to drop all old tables and recreate them
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVIDENCE_ACT);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
 
             onCreate(db);
         }
@@ -111,7 +111,7 @@ public class DbHelper extends SQLiteOpenHelper {
             values.put(SECTION, userData.getSection());
             values.put(PINPOINT, userData.getPinpoint());
 
-            db.insertOrThrow(TABLE_EVIDENCE_ACT, null, values);
+            db.insertOrThrow(TABLE_NAME, null, values);
             db.setTransactionSuccessful();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -132,7 +132,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         List<Section> sectionDetail = new ArrayList<>();
 
-        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_EVIDENCE_ACT;
+        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_NAME;
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(USER_DETAIL_SELECT_QUERY, null);
@@ -173,8 +173,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         List<Section> sectionDetail = new ArrayList<>();
 
-        // TODO: Display section 849
-        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_EVIDENCE_ACT + " WHERE type = '0'";
+        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_NAME + " WHERE type = '0'";
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(USER_DETAIL_SELECT_QUERY, null);
@@ -202,13 +201,27 @@ public class DbHelper extends SQLiteOpenHelper {
             }
         }
 
-        // Add schedule and related provisions
-        Section schedulesAdd = new Section(-1, 737, "schedule", "S", "Schedule");
-        sectionDetail.add(schedulesAdd);
+        // Add after section parts
+        Section schedOneAdd = new Section(-3, 737, "schedule", "S", "Schedule");
+        sectionDetail.add(schedOneAdd);
+
+//        Section schedTwoAdd = new Section(-3, 737, "schedule_ii", "S", "Schedule II");
+//        sectionDetail.add(schedTwoAdd);
+//
+//        Section formsAdd = new Section(-3, 737, "forms", "F", "Forms");
+//        sectionDetail.add(formsAdd);
+////
+//        Section schedThreeAdd = new Section(-3, 737, "schedule_iii", "S", "Schedule III");
+//        sectionDetail.add(schedThreeAdd);
+//
+//        Section schedFourAdd = new Section(-3, 737, "schedule_iv", "S", "Schedule IV");
+//        sectionDetail.add(schedFourAdd);
+
         Section relatedProvsAdd = new Section(-3, 737, "related_provs", "RP", "Related Provisions");
         sectionDetail.add(relatedProvsAdd);
-        Section amendmentsNifAdd = new Section(-3, 737, "amendments_nif", "RP", "Amendments Not In Force");
-        sectionDetail.add(amendmentsNifAdd);
+
+        Section amendmentsAdd = new Section(-3, 737, "amendments_nif", "ANIF", "Amendments Not In Force");
+        sectionDetail.add(amendmentsAdd);
 
 
         return sectionDetail;
@@ -238,7 +251,7 @@ public class DbHelper extends SQLiteOpenHelper {
             }
         }
 
-        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_EVIDENCE_ACT + " WHERE "
+        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_NAME + " WHERE "
                 + FULLTEXT + " LIKE '%" + queryArray.get(0) +"%' AND " + FULLTEXT + " LIKE '%" + queryArray.get(1) +"%' AND "
                 + FULLTEXT + " LIKE '%" + queryArray.get(2) +"%' AND " + FULLTEXT + " LIKE '%" + queryArray.get(3) +"%' AND "
                 + FULLTEXT + " LIKE '%" + queryArray.get(4) +"%' AND " + FULLTEXT + " LIKE '%" + queryArray.get(5) +"%'";
@@ -273,6 +286,5 @@ public class DbHelper extends SQLiteOpenHelper {
         return sectionDetail;
 
     }
-
 
 }

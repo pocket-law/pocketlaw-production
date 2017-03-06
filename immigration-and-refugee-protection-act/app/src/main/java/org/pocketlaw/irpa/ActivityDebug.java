@@ -27,13 +27,15 @@ public class ActivityDebug extends AppCompatActivity {
 
     Button btn_next, btn_db, btn_exp, btn_imp_two, btn_init;
     DbHelper dbHelper;
-    private String DATABASE_NAME = "i2_5";
+    private String DATABASE_NAME;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_debug);
+
+        DATABASE_NAME = getString(R.string.database_name);
 
 
         dbHelper = DbHelper.getInstance(getApplicationContext());
@@ -72,7 +74,6 @@ public class ActivityDebug extends AppCompatActivity {
             public void onClick(View v) {
 
                 Toast.makeText(ActivityDebug.this, "CLICKED!", Toast.LENGTH_SHORT).show();
-
                 exportDB();
 
             }
@@ -111,24 +112,32 @@ public class ActivityDebug extends AppCompatActivity {
 
     private void exportDB() {
 
-        Log.e("EEEE", ""+ getApplicationContext().getPackageName());
+        Log.e("Export DB", "PackageName: "+ getApplicationContext().getPackageName());
+        Log.e("Export DB", "DatabasePath: "+ getApplicationContext().getDatabasePath(DATABASE_NAME).getPath());
 
         // SD card
         File sd = Environment.getExternalStorageDirectory();
         File data = Environment.getDataDirectory();
         FileChannel source = null;
         FileChannel destination = null;
+
         String currentDBPath = "/data/" + getApplicationContext().getPackageName() + "/databases/" + DATABASE_NAME;
+
         String backupDBPath = "/tmp/" + DATABASE_NAME;
         File currentDB = new File(data, currentDBPath);
         File backupDB = new File(sd, backupDBPath);
         try {
+
+
+            //TODO: REMEMBER TO CHANGE PERMISSIONS
+            //TODO: THIS HAS STUMPED YOU TWICE NOW
 
             source = new FileInputStream(currentDB).getChannel();
 
             destination = new FileOutputStream(backupDB).getChannel();
 
             destination.transferFrom(source, 0, source.size());
+
 
             source.close();
             destination.close();
