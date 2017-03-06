@@ -4,10 +4,14 @@
     <!--
     TODO: add again for update function/debugging
 
+
+
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-        -->
+-->
+
 
 
     <application

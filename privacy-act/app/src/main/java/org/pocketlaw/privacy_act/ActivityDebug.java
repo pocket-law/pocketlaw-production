@@ -27,13 +27,15 @@ public class ActivityDebug extends AppCompatActivity {
 
     Button btn_next, btn_db, btn_exp, btn_imp_two, btn_init;
     DbHelper dbHelper;
-    private String DATABASE_NAME = "p21stripped";
+    private String DATABASE_NAME;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_debug);
+
+        DATABASE_NAME = getString(R.string.database_name);
 
 
         dbHelper = DbHelper.getInstance(getApplicationContext());
@@ -110,8 +112,8 @@ public class ActivityDebug extends AppCompatActivity {
 
     private void exportDB() {
 
-        Log.e("EEEE", ""+ getApplicationContext().getPackageName());
-        Log.e("EEEE", ""+ getApplicationContext().getDatabasePath(DATABASE_NAME).getPath());
+        Log.e("Export DB", "PackageName: "+ getApplicationContext().getPackageName());
+        Log.e("Export DB", "DatabasePath: "+ getApplicationContext().getDatabasePath(DATABASE_NAME).getPath());
 
         // SD card
         File sd = Environment.getExternalStorageDirectory();
