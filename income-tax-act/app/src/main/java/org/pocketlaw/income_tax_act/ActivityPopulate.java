@@ -88,7 +88,7 @@ public class ActivityPopulate extends AppCompatActivity {
             //   stream = getResources().openRawResource(R.raw.p21stripped);
 
             stream = getResources().openRawResource(
-                    getResources().getIdentifier(ActivityMain.DATABASE_NAME,
+                    getResources().getIdentifier(getString(R.string.database_name),
                             "raw", getPackageName()));
 
             sections = xmlParser.parse(stream);
