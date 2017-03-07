@@ -201,7 +201,8 @@ public class DbHelper extends SQLiteOpenHelper {
             }
         }
 
-        // Add after section parts
+//        // Add after section parts
+
         Section schedOneAdd = new Section(-3, 737, "schedule_i", "S", "Schedule I");
         sectionDetail.add(schedOneAdd);
 
@@ -215,9 +216,12 @@ public class DbHelper extends SQLiteOpenHelper {
         sectionDetail.add(schedFourAdd);
 
 
+//        Section formsAdd = new Section(-3, 737, "forms", "F", "Forms");
+//        sectionDetail.add(formsAdd);
 
         Section relatedProvsAdd = new Section(-3, 737, "related_provs", "RP", "Related Provisions");
         sectionDetail.add(relatedProvsAdd);
+//
 //        Section amendmentsAdd = new Section(-3, 737, "amendments_nif", "ANIF", "Amendments Not In Force");
 //        sectionDetail.add(amendmentsAdd);
 
@@ -284,6 +288,5 @@ public class DbHelper extends SQLiteOpenHelper {
         return sectionDetail;
 
     }
-
 
 }
