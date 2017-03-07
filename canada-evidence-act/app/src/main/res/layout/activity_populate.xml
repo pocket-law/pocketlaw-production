@@ -10,34 +10,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Criminal Code"
+        android:text="PocketLaw"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="56dp"
         android:textStyle="bold" />
 
 
-    <TextView
-        android:layout_marginBottom="-8dp"
-        android:layout_marginTop="-4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="of"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:id="@+id/textView3" />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Canada"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="44dp"
-        android:textStyle="bold" />
 
     <RelativeLayout
         android:layout_width="wrap_content"

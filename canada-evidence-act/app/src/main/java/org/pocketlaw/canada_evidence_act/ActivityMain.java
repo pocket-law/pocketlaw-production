@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,12 +43,18 @@ public class ActivityMain extends AppCompatActivity {
     private EditText mEdtSearch;
     private TextView mTotalResults;
 
-    private LinearLayout loadCover;
-
     private ImageView mBtnParts;
     public static LinearLayout mParts;
 
+    private WebView webView;
+
     private String LAST_SEARCH = "";
+
+    private String DATABASE_NAME;
+
+
+    //Hacky override to comparing to last search
+    private boolean triedSearch = false;
 
     DbHelper dbHelper;
 
@@ -59,9 +66,16 @@ public class ActivityMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DATABASE_NAME = getString(R.string.database_name);
+
         dbHelper = DbHelper.getInstance(getApplicationContext());
 
         tryImport();
+
+        webView = (WebView) findViewById(R.id.webview);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false);
+
 
         mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_section, dbHelper.getAllSection());
         mListViewSections = (ListView) findViewById(R.id.listview_section);
@@ -79,8 +93,6 @@ public class ActivityMain extends AppCompatActivity {
         mBtnSearch = (ImageView) findViewById(R.id.btn_search);
         mEdtSearch = (EditText) findViewById(R.id.edt_search);
         mTotalResults = (TextView) findViewById(R.id.total_results);
-
-        loadCover = (LinearLayout) findViewById(R.id.load_cover);
 
 
         // bring parts up or down
@@ -122,10 +134,14 @@ public class ActivityMain extends AppCompatActivity {
                 mEdtSearch.requestFocus();
 
                 //TODO: this is not a perfect solution to returning focus
-                if ((mEdtSearch.length() != 0) && !(mEdtSearch.getText().toString().equals(LAST_SEARCH))) {
+                if ((mEdtSearch.length() != 0) && !(mEdtSearch.getText().toString().equals(LAST_SEARCH)) || (triedSearch == true)) {
+                    triedSearch = false;
                     hideSoftKeyboard(ActivityMain.this);
                     actionSearch();
                 } else {
+                    if (mEdtSearch.getText().toString().equals(LAST_SEARCH)) {
+                        triedSearch = true;
+                    }
                     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     inputMethodManager.showSoftInput(mEdtSearch, 0);
                 }
@@ -167,7 +183,6 @@ public class ActivityMain extends AppCompatActivity {
         if (partsVisible == 0) {
             mParts.setVisibility(View.VISIBLE);
             mParts.requestFocus();
-
             partsVisible = 1;
         } else if (partsVisible == 1) {
             mParts.setVisibility(View.GONE);
@@ -231,17 +246,17 @@ public class ActivityMain extends AppCompatActivity {
 
     private void checkImportStatus() {
 
-        String destPath = getApplicationContext().getDatabasePath("c5").getPath();
+        String destPath = getApplicationContext().getDatabasePath(DATABASE_NAME).getPath();
 
         // Create empty file at destination path
         boolean test = new File(destPath).exists();
 
         if (!test) {
 
-            Log.e("EEEEP", "doesn't exist");
+            Log.e("Database ", "doesn't exist");
 
         } else {
-            Log.e("EEEEP", "exists");
+            Log.e("Database ", "exists");
         }
 
     }
@@ -250,9 +265,9 @@ public class ActivityMain extends AppCompatActivity {
     private void importDB() throws IOException {
 
         //Open your assets db as the input stream
-        InputStream in = getApplicationContext().getAssets().open("c5");
+        InputStream in = getApplicationContext().getAssets().open(DATABASE_NAME);
 
-        String destPath = getApplicationContext().getDatabasePath("c5").getPath();
+        String destPath = getApplicationContext().getDatabasePath(DATABASE_NAME).getPath();
 
         // Create empty file at destination path
         File f = new File(destPath);

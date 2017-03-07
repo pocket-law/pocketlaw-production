@@ -6,84 +6,6 @@
 
 
     <LinearLayout
-        android:id="@+id/load_cover"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/brandRed"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone"
-        tools:visibility="gone">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Criminal Code"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="56dp"
-            android:textStyle="bold" />
-
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="-8dp"
-            android:layout_marginTop="-4dp"
-            android:text="of"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp"
-            android:textStyle="bold" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Canada"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="44dp"
-            android:textStyle="bold" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginBottom="40dp"
-                android:layout_marginTop="40dp"
-                android:src="@drawable/leaf"
-                android:tint="@color/brandBlue" />
-
-            <ProgressBar
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_centerInParent="true"
-                android:layout_margin="40dp"
-                android:paddingTop="20dp" />
-
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Populating database..."
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
@@ -112,17 +34,13 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Canada Evidence Act"
+                android:text="@string/app_name"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 android:textStyle="bold" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Canada Evidence Act</string>
+    <string name="act_name">C-5</string>
+
+    <string name="database_name">c5</string>
 </resources>

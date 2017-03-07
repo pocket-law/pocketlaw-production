@@ -7,8 +7,8 @@ android {
         applicationId "org.pocketlaw.canada_evidence_act"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 1
-        versionName "0.01"
+        versionCode 2
+        versionName "0.021"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
