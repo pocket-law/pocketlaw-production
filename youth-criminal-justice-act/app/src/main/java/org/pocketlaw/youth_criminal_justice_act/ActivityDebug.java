@@ -27,13 +27,15 @@ public class ActivityDebug extends AppCompatActivity {
 
     Button btn_next, btn_db, btn_exp, btn_imp_two, btn_init;
     DbHelper dbHelper;
-    private String DATABASE_NAME = getString(R.string.database_name);
+    private String DATABASE_NAME;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_debug);
+
+        DATABASE_NAME = getString(R.string.database_name);
 
 
         dbHelper = DbHelper.getInstance(getApplicationContext());
