@@ -137,6 +137,52 @@ public class AdapterHeading extends ArrayAdapter<Section> {
         }
 
 
+        if (current.getPinpoint().equals("forms")) {
+            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    results.setText("");
+
+                    listviewQuery.setVisibility(View.GONE);
+
+                    // Set section listview on basis of TOC selection
+                    listviewSection.setVisibility(View.GONE);
+                    webView.loadUrl("file:///android_res/raw/forms.html");
+                    webView.setVisibility(View.VISIBLE);
+                    ActivityMain.partsHideShow();
+                }
+            });
+        }
+
+
+        if (current.getPinpoint().equals("schedules")) {
+            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    results.setText("");
+
+                    listviewQuery.setVisibility(View.GONE);
+
+                    // Set section listview on basis of TOC selection
+                    listviewSection.setVisibility(View.GONE);
+                    webView.loadUrl("file:///android_res/raw/schedules.html");
+                    webView.setVisibility(View.VISIBLE);
+                    ActivityMain.partsHideShow();
+                }
+            });
+        }
+
+
+
+
 
         if (current.getPinpoint().equals("schedule")) {
             heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
@@ -237,7 +283,7 @@ public class AdapterHeading extends ArrayAdapter<Section> {
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
-                    webView.loadUrl("file:///android_res/raw/schedule_iii.html");
+                    webView.loadUrl("file:///android_res/raw/schedule_iv.html");
                     webView.setVisibility(View.VISIBLE);
                     ActivityMain.partsHideShow();
                 }

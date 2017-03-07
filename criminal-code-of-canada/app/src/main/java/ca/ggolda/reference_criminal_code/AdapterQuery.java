@@ -6,6 +6,8 @@ package ca.ggolda.reference_criminal_code;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
+import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -55,7 +57,44 @@ public class AdapterQuery extends ArrayAdapter<Section> {
 
         // TODO: change to full address
         resultLocation.setText(current.getSection());
-        resultText.setText(current.getFulltext());
+
+        String responseClean = current.getFulltext();
+
+        String term1 = DbHelper.TERM1;
+        String term2 = DbHelper.TERM2;
+        String term3 = DbHelper.TERM3;
+        String term4 = DbHelper.TERM4;
+        String term5 = DbHelper.TERM5;
+        String term6 = DbHelper.TERM6;
+
+
+        if (term1 != "") {
+            responseClean = responseClean.replaceAll("(?i)" + term1, "<font color='#ff5656'><i>" + term1 + "</i></font>");
+        }
+        if (term2 != "") {
+            responseClean = responseClean.replaceAll("(?i)" + term2, "<font color='#ff5656'><i>" + term2 + "</i></font>");
+        }
+        if (term3 != "") {
+            responseClean = responseClean.replaceAll("(?i)" + term3, "<font color='#ff5656'><i>" + term3 + "</i></font>");
+        }
+        if (term4 != "") {
+            responseClean = responseClean.replaceAll("(?i)" + term4, "<font color='#ff5656'><i>" + term4 + "</i></font>");
+        }
+        if (term5 != "") {
+            responseClean = responseClean.replaceAll("(?i)" + term5, "<font color='#ff5656'><i>" + term5 + "</i></font>");
+        }
+        if (term6 != "") {
+            responseClean = responseClean.replaceAll("(?i)" + term6, "<font color='#ff5656'><i>" + term6 + "</i></font>");
+        }
+
+        // Check build version, as fromHtml is deprecated...
+        if (Build.VERSION.SDK_INT >= 24) {
+            resultText.setText(Html.fromHtml(responseClean, Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            resultText.setText(Html.fromHtml(responseClean));
+        }
+
+        // resultText.setText(current.getFulltext());
 
         // Get section and query listViews and webview from main activity
         listViewSection = (ListView) ((ActivityMain) mContext).findViewById(R.id.listview_section);

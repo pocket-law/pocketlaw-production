@@ -7,6 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +30,26 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String SECTION = "section";
     private static final String PINPOINT = "pinpoint";
 
+    public static  String TERM1 = "";
+    public static  String TERM2 = "";
+    public static  String TERM3 = "";
+    public static  String TERM4 = "";
+    public static  String TERM5 = "";
+    public static  String TERM6 = "";
+
+
     private static DbHelper mDbHelper;
 
     private String TABLE_NAME;
+
+    private static Context mContext;
 
 
     public static synchronized DbHelper getInstance(Context context) {
         // Use the application context, which will ensure that you
         // don't accidentally leak an Activity's context.
+
+        mContext = context;
 
         if (mDbHelper == null) {
             mDbHelper = new DbHelper(context.getApplicationContext());
@@ -201,21 +214,28 @@ public class DbHelper extends SQLiteOpenHelper {
             }
         }
 
-        // Add after section parts
+
+
+//        // Add after section parts
+
         Section schedOneAdd = new Section(-3, 737, "schedules", "S", "Schedules");
         sectionDetail.add(schedOneAdd);
 
+//        Section schedOneAdd = new Section(-3, 737, "schedule_i", "S", "Schedule I");
+//        sectionDetail.add(schedOneAdd);
+
 //        Section schedTwoAdd = new Section(-3, 737, "schedule_ii", "S", "Schedule II");
 //        sectionDetail.add(schedTwoAdd);
-
-        Section formsAdd = new Section(-3, 737, "forms", "F", "Forms");
-        sectionDetail.add(formsAdd);
 //
 //        Section schedThreeAdd = new Section(-3, 737, "schedule_iii", "S", "Schedule III");
 //        sectionDetail.add(schedThreeAdd);
 //
 //        Section schedFourAdd = new Section(-3, 737, "schedule_iv", "S", "Schedule IV");
 //        sectionDetail.add(schedFourAdd);
+
+
+        Section formsAdd = new Section(-3, 737, "forms", "F", "Forms");
+        sectionDetail.add(formsAdd);
 
         Section relatedProvsAdd = new Section(-3, 737, "related_provs", "RP", "Related Provisions");
         sectionDetail.add(relatedProvsAdd);
@@ -250,11 +270,23 @@ public class DbHelper extends SQLiteOpenHelper {
                 queryArray.add("");
             }
         }
+        TERM1 = (String) queryArray.get(0);
+        TERM2 = (String) queryArray.get(1);
+        TERM3 = (String) queryArray.get(2);
+        TERM4 = (String) queryArray.get(3);
+        TERM5 = (String) queryArray.get(4);
+        TERM6 = (String) queryArray.get(5);
+
+        // Send message to user if their search query exceeds term limit
+        if (queryList.length > 6) {
+            Toast.makeText(mContext.getApplicationContext(), "Search Limited to Six (6) Terms", Toast.LENGTH_SHORT).show();
+        }
+
 
         String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_NAME + " WHERE "
-                + FULLTEXT + " LIKE '%" + queryArray.get(0) +"%' AND " + FULLTEXT + " LIKE '%" + queryArray.get(1) +"%' AND "
-                + FULLTEXT + " LIKE '%" + queryArray.get(2) +"%' AND " + FULLTEXT + " LIKE '%" + queryArray.get(3) +"%' AND "
-                + FULLTEXT + " LIKE '%" + queryArray.get(4) +"%' AND " + FULLTEXT + " LIKE '%" + queryArray.get(5) +"%'";
+                + FULLTEXT + " LIKE '%" + TERM1 +"%' AND " + FULLTEXT + " LIKE '%" + TERM2 +"%' AND "
+                + FULLTEXT + " LIKE '%" + TERM3 +"%' AND " + FULLTEXT + " LIKE '%" + TERM4 +"%' AND "
+                + FULLTEXT + " LIKE '%" + TERM5 +"%' AND " + FULLTEXT + " LIKE '%" + TERM6 +"%'";
 
 
         SQLiteDatabase db = getReadableDatabase();
