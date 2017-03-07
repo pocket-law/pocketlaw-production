@@ -7,8 +7,8 @@ android {
         applicationId "org.pocketlaw.divorce_act"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 1
-        versionName "0.06"
+        versionCode 2
+        versionName "0.019"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

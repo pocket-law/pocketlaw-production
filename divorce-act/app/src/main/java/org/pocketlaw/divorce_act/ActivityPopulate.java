@@ -27,7 +27,6 @@ public class ActivityPopulate extends AppCompatActivity {
     public static boolean refreshDisplay = true;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +45,10 @@ public class ActivityPopulate extends AppCompatActivity {
             try {
                 return loadSectionXmlFromNetwork(urls[0]);
             } catch (IOException e) {
+                Log.e("ActivityPopulate", "CONNECTION ERROR");
                 return "connection error";
             } catch (XmlPullParserException e) {
+                Log.e("ActivityPopulate", "XML ERROR");
                 return "xml error";
             }
         }
@@ -55,19 +56,20 @@ public class ActivityPopulate extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
 
-            Intent intent=new Intent(ActivityPopulate.this, ActivityMain.class);
+            Intent intent = new Intent(ActivityPopulate.this, ActivityMain.class);
             startActivity(intent);
 
         }
     }
 
 
-    // Uses AsyncTask to download the XML feed from laws-lois.justice.gc.ca.
+    // Creates instance of async task the XML feed from local xml or laws-lois.justice.gc.ca.
     public void loadPage() {
 
-            new DownloadSectionXmlTask().execute(URL);
+        new DownloadSectionXmlTask().execute(URL);
 
     }
+
 
     // Loads section from XML
     private String loadSectionXmlFromNetwork(String urlString) throws XmlPullParserException, IOException {
@@ -83,10 +85,10 @@ public class ActivityPopulate extends AppCompatActivity {
             // TODO: use downloadUrl as source when updating
             //stream = downloadUrl(urlString);
 
-         //   stream = getResources().openRawResource(R.raw.p21stripped);
+            //   stream = getResources().openRawResource(R.raw.p21stripped);
 
             stream = getResources().openRawResource(
-                    getResources().getIdentifier(ActivityMain.DATABASE_NAME,
+                    getResources().getIdentifier(getString(R.string.database_name),
                             "raw", getPackageName()));
 
             sections = xmlParser.parse(stream);
@@ -104,7 +106,7 @@ public class ActivityPopulate extends AppCompatActivity {
             Log.e("XML sections.get(0)", "" + sections.get(0));
         }
 
-        return ""+sections.size();
+        return "" + sections.size();
 
     }
 

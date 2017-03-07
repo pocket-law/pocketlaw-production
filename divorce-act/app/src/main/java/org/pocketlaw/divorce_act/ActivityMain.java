@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -45,9 +46,12 @@ public class ActivityMain extends AppCompatActivity {
     private ImageView mBtnParts;
     public static LinearLayout mParts;
 
+    private WebView webView;
+
     private String LAST_SEARCH = "";
 
-    public static String DATABASE_NAME = "d3_4stripped";
+    private String DATABASE_NAME;
+
 
     //Hacky override to comparing to last search
     private boolean triedSearch = false;
@@ -62,9 +66,16 @@ public class ActivityMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DATABASE_NAME = getString(R.string.database_name);
+
         dbHelper = DbHelper.getInstance(getApplicationContext());
 
         tryImport();
+
+        webView = (WebView) findViewById(R.id.webview);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false);
+
 
         mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_section, dbHelper.getAllSection());
         mListViewSections = (ListView) findViewById(R.id.listview_section);
@@ -242,10 +253,10 @@ public class ActivityMain extends AppCompatActivity {
 
         if (!test) {
 
-            Log.e("EEEEP", "doesn't exist");
+            Log.e("Database ", "doesn't exist");
 
         } else {
-            Log.e("EEEEP", "exists");
+            Log.e("Database ", "exists");
         }
 
     }
