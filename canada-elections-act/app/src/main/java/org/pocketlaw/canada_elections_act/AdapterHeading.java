@@ -237,7 +237,7 @@ public class AdapterHeading extends ArrayAdapter<Section> {
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
-                    webView.loadUrl("file:///android_res/raw/schedule_iii.html");
+                    webView.loadUrl("file:///android_res/raw/schedule_iv.html");
                     webView.setVisibility(View.VISIBLE);
                     ActivityMain.partsHideShow();
                 }
