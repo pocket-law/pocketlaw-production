@@ -1,10 +1,13 @@
 ## PocketLaw
 PocketLaw is an open source law reference project aimed at making the law of Canada more accessible and understandable.
 
+
+<p align="center">
 <img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/copyright-act/screenshots/phone1.jpg" width="144">
 <img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/copyright-act/screenshots/screenshot2.jpg" width="144">
 <img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/copyright-act/screenshots/screenshot3.jpg" width="144">
 <img src="https://github.com/simplegr33n/pocketlaw-production/blob/master/copyright-act/screenshots/screenshot1.jpg" width="144">
+</p>
 
 This is a repository to store the in production versions of PocketLaw Android apps. 
 
