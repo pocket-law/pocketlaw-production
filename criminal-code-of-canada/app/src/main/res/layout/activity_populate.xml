@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:background="@color/brandRed"
     android:gravity="center"
@@ -13,7 +14,7 @@
         android:text="PocketLaw"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="56dp"
+        android:textSize="56sp"
         android:textStyle="bold" />
 
 
@@ -21,15 +22,18 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
 
         <ImageView
             android:layout_width="160dp"
             android:layout_height="160dp"
-            android:layout_marginBottom="40dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="30dp"
             android:src="@drawable/leaf"
             android:tint="@color/brandBlue"
+            android:id="@+id/img_leaf"
+            android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true" />
 
         <ProgressBar
@@ -39,17 +43,59 @@
             android:layout_height="64dp"
             android:layout_margin="40dp" />
 
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/img_leaf"
+            android:text="Populating database..."
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
+
+
+
+
+
+
     <TextView
-        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Populating database..."
+        android:text="Criminal Code"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="24dp"
+        android:textSize="44sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R.S.C., 1985, c. C-46"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="20dp"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_marginRight="8dp"
+        tools:text="logtext"
+        android:textAlignment="center"
+        android:textColor="#e8e3e3"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:id="@+id/textView4" />
+        android:id="@+id/txt_log" />
 
 </LinearLayout>

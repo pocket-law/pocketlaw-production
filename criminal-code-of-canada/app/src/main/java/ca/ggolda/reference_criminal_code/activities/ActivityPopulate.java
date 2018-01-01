@@ -1,8 +1,11 @@
-package ca.ggolda.reference_criminal_code;
+package ca.ggolda.reference_criminal_code.activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -15,6 +18,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.ggolda.reference_criminal_code.R;
+import ca.ggolda.reference_criminal_code.objects.Section;
+import ca.ggolda.reference_criminal_code.data_utils.XmlParser;
+
 /**
  * Created by gcgol on 01/10/2017.
  */
@@ -25,6 +32,13 @@ public class ActivityPopulate extends AppCompatActivity {
 
     // Whether the display should be refreshed.
     public static boolean refreshDisplay = true;
+
+    public final static Handler mHandler = new Handler();
+
+    public static Handler getHandler() {
+        return mHandler;
+    }
+
 
 
     @Override
@@ -79,7 +93,7 @@ public class ActivityPopulate extends AppCompatActivity {
         List<Section> sections = new ArrayList<>();
 
         // Instantiate the parser
-        XmlParser xmlParser = new XmlParser();
+        XmlParser xmlParser = new XmlParser(this);
 
         try {
             // TODO: use downloadUrl as source when updating

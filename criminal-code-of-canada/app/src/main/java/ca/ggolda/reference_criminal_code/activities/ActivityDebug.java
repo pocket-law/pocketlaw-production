@@ -1,4 +1,4 @@
-package ca.ggolda.reference_criminal_code;
+package ca.ggolda.reference_criminal_code.activities;
 
 
 import android.content.Intent;
@@ -18,6 +18,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.channels.FileChannel;
+
+import ca.ggolda.reference_criminal_code.data_utils.DbHelper;
+import ca.ggolda.reference_criminal_code.R;
 
 /**
  * Created by gcgol on 01/18/2017.

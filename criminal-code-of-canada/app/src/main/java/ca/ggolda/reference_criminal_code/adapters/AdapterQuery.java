@@ -1,4 +1,4 @@
-package ca.ggolda.reference_criminal_code;
+package ca.ggolda.reference_criminal_code.adapters;
 
 /**
  * Created by gcgol on 01/06/2017.
@@ -13,10 +13,16 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import ca.ggolda.reference_criminal_code.data_utils.DbHelper;
+import ca.ggolda.reference_criminal_code.R;
+import ca.ggolda.reference_criminal_code.objects.Section;
+import ca.ggolda.reference_criminal_code.activities.ActivityMain;
 
 public class AdapterQuery extends ArrayAdapter<Section> {
 
@@ -26,6 +32,8 @@ public class AdapterQuery extends ArrayAdapter<Section> {
     // Layouts
     private TextView resultLocation;
     private TextView resultText;
+
+    private LinearLayout viewQuery;
 
     private ListView listViewQuery;
     private ListView listViewSection;
@@ -103,6 +111,8 @@ public class AdapterQuery extends ArrayAdapter<Section> {
         editTextQuery = (EditText) ((ActivityMain) mContext).findViewById(R.id.edt_search);
         resultsTotal = (TextView) ((ActivityMain) mContext).findViewById(R.id.total_results);
 
+        viewQuery = (LinearLayout) ((ActivityMain) mContext).findViewById(R.id.view_query);
+
         webView = (WebView) ((ActivityMain) mContext).findViewById(R.id.webview);
 
 
@@ -121,7 +131,7 @@ public class AdapterQuery extends ArrayAdapter<Section> {
                 // Take focus off EditText
                 listViewSection.requestFocus();
 
-                listViewQuery.setVisibility(View.GONE);
+                viewQuery.setVisibility(View.GONE);
                 webView.setVisibility(View.GONE);
 
                 ActivityMain.resultsVisible = 0;

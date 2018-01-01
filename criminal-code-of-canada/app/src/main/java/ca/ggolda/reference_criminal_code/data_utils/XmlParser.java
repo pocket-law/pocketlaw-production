@@ -1,8 +1,10 @@
-package ca.ggolda.reference_criminal_code;
+package ca.ggolda.reference_criminal_code.data_utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.util.Xml;
+import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -11,6 +13,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import ca.ggolda.reference_criminal_code.R;
+import ca.ggolda.reference_criminal_code.activities.ActivityPopulate;
+import ca.ggolda.reference_criminal_code.objects.Section;
 
 /**
  * Created by gcgol on 01/09/2017.
@@ -38,6 +44,25 @@ public class XmlParser {
             in.close();
         }
     }
+
+
+        public XmlParser(Context context){
+            this.mContext = context;
+        }
+
+        private void Update(String s){
+
+            final String text = s + "...";
+            ActivityPopulate.getHandler().post(new Runnable() {
+
+                public void run() {
+                    //ui stuff here :)
+                    TextView txtView = (TextView) ((Activity)mContext).findViewById(R.id.txt_log);
+                    txtView.setText(text);
+                }
+            });
+
+        }
 
 
     // For skipping.
@@ -1292,6 +1317,8 @@ public class XmlParser {
 
         String text = parser.getText();
 
+        Update(text);
+
 
         Section resultObject = new Section(1, "marginalNote", section, text);
         dbHelper.insertSectionDetail(resultObject);
@@ -1667,6 +1694,8 @@ public class XmlParser {
         parser.next();
 
         String text = parser.getText();
+
+
 
         Section resultObject = new Section(0, pinpoint, section, text);
         dbHelper.insertSectionDetail(resultObject);

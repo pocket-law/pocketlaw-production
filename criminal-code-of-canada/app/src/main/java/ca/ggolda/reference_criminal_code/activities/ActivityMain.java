@@ -1,10 +1,9 @@
-package ca.ggolda.reference_criminal_code;
+package ca.ggolda.reference_criminal_code.activities;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -16,12 +15,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import ca.ggolda.reference_criminal_code.adapters.AdapterHeading;
+import ca.ggolda.reference_criminal_code.adapters.AdapterQuery;
+import ca.ggolda.reference_criminal_code.adapters.AdapterSection;
+import ca.ggolda.reference_criminal_code.data_utils.DbHelper;
+import ca.ggolda.reference_criminal_code.R;
+import ca.ggolda.reference_criminal_code.dialogs.DialogInfo;
+
+import static java.lang.Thread.sleep;
 
 
 /**
@@ -42,6 +43,12 @@ public class ActivityMain extends AppCompatActivity {
     private ImageView mBtnSearch;
     private EditText mEdtSearch;
     private TextView mTotalResults;
+
+    private ImageView mBtnInfo;
+
+    private static LinearLayout mViewQuery;
+
+    private LinearLayout mLayoutLoad;
 
     private ImageView mBtnParts;
     public static LinearLayout mParts;
@@ -70,29 +77,37 @@ public class ActivityMain extends AppCompatActivity {
 
         dbHelper = DbHelper.getInstance(getApplicationContext());
 
-        tryImport();
-
-        webView = (WebView) findViewById(R.id.webview);
-        webView.getSettings().setBuiltInZoomControls(true);
-        webView.getSettings().setDisplayZoomControls(false);
+        mLayoutLoad = (LinearLayout) findViewById(R.id.load_layout);
 
 
-        mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_section, dbHelper.getAllSection());
-        mListViewSections = (ListView) findViewById(R.id.listview_section);
-        mListViewSections.setAdapter(mAdapterSection);
+        setListWebViews();
 
-        mAdapterHeading = new AdapterHeading(ActivityMain.this, R.layout.card_heading, dbHelper.getAllHeading());
-        mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
-        mListViewHeadings.setAdapter(mAdapterHeading);
 
         mListViewQuery = (ListView) findViewById(R.id.listview_query);
 
         mBtnParts = (ImageView) findViewById(R.id.btn_parts);
         mParts = (LinearLayout) findViewById(R.id.parts);
 
+        mViewQuery = (LinearLayout) findViewById(R.id.view_query);
+
         mBtnSearch = (ImageView) findViewById(R.id.btn_search);
         mEdtSearch = (EditText) findViewById(R.id.edt_search);
         mTotalResults = (TextView) findViewById(R.id.total_results);
+
+        mBtnInfo = (ImageView) findViewById(R.id.btn_info);
+
+
+        mBtnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                DialogInfo cdd = new DialogInfo(ActivityMain.this);
+                cdd.show();
+
+            }
+        });
+
+
 
 
         // bring parts up or down
@@ -151,6 +166,21 @@ public class ActivityMain extends AppCompatActivity {
 
     }
 
+    private void setListWebViews() {
+        mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_section, dbHelper.getAllSection());
+        mListViewSections = (ListView) findViewById(R.id.listview_section);
+        mListViewSections.setAdapter(mAdapterSection);
+
+        mAdapterHeading = new AdapterHeading(ActivityMain.this, R.layout.card_heading, dbHelper.getAllHeading());
+        mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
+        mListViewHeadings.setAdapter(mAdapterHeading);
+
+        webView = (WebView) findViewById(R.id.webview);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false);
+
+
+    }
 
     private void actionSearch() {
 
@@ -159,33 +189,43 @@ public class ActivityMain extends AppCompatActivity {
 
         LAST_SEARCH = query;
 
+
+
         if (!query.equals("")) {
-            mListViewQuery.setVisibility(View.VISIBLE);
+
 
             mAdapterQuery = new AdapterQuery(ActivityMain.this, R.layout.card_query, dbHelper.getSearchResults(query));
             mListViewQuery.setAdapter(mAdapterQuery);
         }
 
-        if (mAdapterQuery.getCount() > 0) {
-            mTotalResults.setText("" + mAdapterQuery.getCount() + " Results");
-        } else {
-            mTotalResults.setText("No Results");
+        if ((mAdapterQuery != null) && mAdapterQuery.getCount() == 1) {
+            mTotalResults.setText("" + mAdapterQuery.getCount() + " result for... " + LAST_SEARCH);
+        } else if ((mAdapterQuery != null) && mAdapterQuery.getCount() > 1) {
+            mTotalResults.setText("" + mAdapterQuery.getCount() + " results for... " + LAST_SEARCH);
+        } else if ((mAdapterQuery != null) && mAdapterQuery.getCount() == 0) {
+            mTotalResults.setText("No results for... " + LAST_SEARCH);
         }
+
+        mViewQuery.setVisibility(View.VISIBLE);
+        mListViewQuery.setVisibility(View.VISIBLE);
 
         // Hide headings listview (inside mParts linearlayout) if it's up
         mParts.setVisibility(View.GONE);
 
         resultsVisible = 1;
+        partsVisible = 0;
     }
 
     public static void partsHideShow() {
 
         if (partsVisible == 0) {
             mParts.setVisibility(View.VISIBLE);
+
             mParts.requestFocus();
             partsVisible = 1;
         } else if (partsVisible == 1) {
             mParts.setVisibility(View.GONE);
+            mViewQuery.setVisibility(View.GONE);
             partsVisible = 0;
         }
     }
@@ -202,10 +242,10 @@ public class ActivityMain extends AppCompatActivity {
     public void onBackPressed() {
 
         if (resultsVisible == 1 || partsVisible == 1) {
-          //  mListViewSections.setVisibility(View.VISIBLE);
+            //  mListViewSections.setVisibility(View.VISIBLE);
 
             mParts.setVisibility(View.GONE);
-            mListViewQuery.setVisibility(View.GONE);
+            mViewQuery.setVisibility(View.GONE);
 
             mEdtSearch.clearFocus();
             mTotalResults.setText("");
@@ -225,72 +265,6 @@ public class ActivityMain extends AppCompatActivity {
             } else {
                 super.onBackPressed();
             }
-        }
-
-    }
-
-    private void tryImport() {
-        try {
-            importDB();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            // If the no sections in database, import via ActivityImport
-            if (dbHelper.getAllSection().size() > 1) {
-                Log.d("LoadSections:", "Success");
-            } else {
-                tryImport();
-            }
-        }
-    }
-
-    private void checkImportStatus() {
-
-        String destPath = getApplicationContext().getDatabasePath(DATABASE_NAME).getPath();
-
-        // Create empty file at destination path
-        boolean test = new File(destPath).exists();
-
-        if (!test) {
-
-            Log.e("Database ", "doesn't exist");
-
-        } else {
-            Log.e("Database ", "exists");
-        }
-
-    }
-
-
-    private void importDB() throws IOException {
-
-        //Open your assets db as the input stream
-        InputStream in = getApplicationContext().getAssets().open(DATABASE_NAME);
-
-        String destPath = getApplicationContext().getDatabasePath(DATABASE_NAME).getPath();
-
-        // Create empty file at destination path
-        File f = new File(destPath);
-
-        //Open the empty db as the output stream
-        try {
-            OutputStream out = new FileOutputStream(new File(destPath));
-
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = in.read(buffer)) > 0) {
-                out.write(buffer, 0, length);
-            }
-            in.close();
-            out.close();
-
-            Log.e("DB Import", "imported");
-
-            checkImportStatus();
-
-
-        } catch (FileNotFoundException e) {
-            Log.e("DB Import", "File not foound" + e);
         }
 
     }

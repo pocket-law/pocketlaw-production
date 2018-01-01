@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#36376d"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="10dp"
+        android:shadowColor="#94000000"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:text="Criminal Code"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:shadowColor="#94000000"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:text="R.S.C., 1985, c. C-46"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFFFFF"
+        android:textStyle="italic"
+        android:padding="2dp"
+        android:text="Act current to 2017-12-05 and last amended on 2017-10-18."
+        android:textAlignment="center"
+        android:textSize="16sp" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#3E80B4"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="100dp"
+            android:alpha="0.8"
+            android:layout_height="30dp"
+            android:background="#FFFFFF"
+            android:clickable="true"
+            android:text="OK"
+            android:textColor="#94000000"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>

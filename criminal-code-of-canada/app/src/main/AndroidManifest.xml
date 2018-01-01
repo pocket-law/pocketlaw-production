@@ -22,8 +22,9 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="ca.ggolda.reference_criminal_code.ActivityMain"
+            android:name="ca.ggolda.reference_criminal_code.activities.ActivitySplash"
             android:label="@string/app_name"
+            android:noHistory="true"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
@@ -35,13 +36,18 @@
         </activity>
 
         <activity
-            android:name="ca.ggolda.reference_criminal_code.ActivityDebug"
+            android:name="ca.ggolda.reference_criminal_code.activities.ActivityDebug"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name="ca.ggolda.reference_criminal_code.ActivityPopulate"
+            android:name="ca.ggolda.reference_criminal_code.activities.ActivityMain"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name="ca.ggolda.reference_criminal_code.activities.ActivityPopulate"
+            android:screenOrientation="portrait"
+            android:noHistory="true" />
 
 
     </application>

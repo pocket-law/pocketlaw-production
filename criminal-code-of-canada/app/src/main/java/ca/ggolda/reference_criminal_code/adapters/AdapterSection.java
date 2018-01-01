@@ -1,4 +1,4 @@
-package ca.ggolda.reference_criminal_code;
+package ca.ggolda.reference_criminal_code.adapters;
 
 /**
  * Created by gcgol on 01/06/2017.
@@ -13,6 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
+
+import ca.ggolda.reference_criminal_code.R;
+import ca.ggolda.reference_criminal_code.objects.Section;
 
 public class AdapterSection extends ArrayAdapter<Section> {
 

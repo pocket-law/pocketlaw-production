@@ -1,4 +1,4 @@
-package ca.ggolda.reference_criminal_code;
+package ca.ggolda.reference_criminal_code.objects;
 
 import java.io.Serializable;
 

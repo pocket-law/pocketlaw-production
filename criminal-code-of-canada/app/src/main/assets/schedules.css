@@ -1,0 +1,132 @@
+#wb-tphp,
+nav {
+	display: none;
+}
+
+
+div:not(.row):not(.container):not(.AmendedText):not(.FootNote):not(.Schedule):not(.HistoricalNote):not(.ScheduleNIF):not(.ScheduleRP):not(.listItemBlock0):not(.listItemText3):not(.listItemText2):not(.listItemLabel):not(.wb-txthl):not([class]) {
+	display: none;
+}
+
+figure {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+}
+
+a.PITLink {
+	display: none;
+}
+
+body {
+	padding: 4px;
+	font-size: 1em;
+	font-family: helvetica;
+}
+
+
+
+dt,
+dd,
+.wb-invisible,
+h2.modal-title {
+	display: none;
+}
+
+.scheduleTitleText {
+	white-space: normal;
+    display: inline;
+	text-align: center;
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+.OriginatingRef {
+	display:block;
+	white-space: normal;
+}
+
+h6 {
+	font-size:1.2em;
+}	
+
+.scheduleLabel {
+	display: block;
+	white-space: pre;
+	font-size: 1.4em;
+	background-color: #d4d8dc;
+}
+
+
+
+p.nifrpCitation {
+	background-color: #d4d8dc;
+	display: block;
+	font-weight: bold;
+	font-size: 1.3em;
+	padding-top: 6;
+	padding-bottom: 6;
+}
+
+.HistoricalNote {
+	font-size: 0.6em;
+}
+
+.lawlabel {
+	font-weight: bold;
+}
+
+
+
+ul.HistoricalNote {
+	list-style: none;
+	font-size: 0.8em;
+}
+
+.MarginalNote {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+em {
+	font-size: 1em;
+}
+
+.indent-0-0 {
+	font-size: 1.1em;
+}
+
+.RelatedProvs,
+.NifProvs,
+.ProvisionList {
+	list-style: none;
+	padding-left: 0;
+}
+
+.Leader {
+	width:4pc;
+	border-bottom:1px dotted black;
+}
+
+.Leader-dot {
+	width:4pc;
+	border-bottom:1px dotted black;
+}
+
+.Schedule {
+	display: block;
+	background-color:#FFFFFF;
+}
+
+.ScheduleRP {
+	display: block;
+	background-color:#FFFFFF;
+}
+
+.ScheduleNIF {
+	display: block;
+	background-color:#FFFFFF;
+}
+
