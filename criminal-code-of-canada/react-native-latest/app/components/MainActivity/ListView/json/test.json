@@ -1,0 +1,199 @@
+{
+"title": "Canadian Legal Dictionary",
+"version": "1.0 alpha",
+"terms":
+	[
+        {
+        "term": "Inter Partes ",
+        "definition": "Latin- between parties.",
+        "source":
+            {
+            "url": "http://www.canadianlawsite.ca",
+            "name": "Canadian Law Site"
+            }
+        },
+        {
+        "term": "Intestate ",
+        "definition": "Dying without a will.",
+        "source":
+            {
+            "url": "http://www.canadianlawsite.ca",
+            "name": "Canadian Law Site"
+            }
+        }
+    ],
+"categories":
+	[
+		{
+		"name": "Aboriginal Law"
+		},
+		{
+		"name": "Access to Justice"
+		},
+		{
+		"name": "Administrative Law"
+		},
+		{
+		"name": "Agricultural"
+		},
+		{
+		"name": "Alternative Dispute Resolution"
+		},
+		{
+		"name": "Asian Law"
+		},
+		{
+		"name": "Banking"
+		},
+		{
+		"name": "Bankruptcy"
+		},
+		{
+		"name": "Civil Code"
+		},
+		{
+		"name": "Civil Litigation"
+		},
+		{
+		"name": "Communication, Media, and Technology Law"
+		},
+		{
+		"name": "Computer & Internet"
+		},
+		{
+		"name": "Constitutional Law"
+		},
+		{
+		"name": "Contract Law"
+		},
+		{
+		"name": "Corporate and Commercial Law"
+		},
+		{
+		"name": "Criminal Law"
+		},
+		{
+		"name": "Criminology"
+		},
+		{
+		"name": "Economics"
+		},
+		{
+		"name": "Environmental Law"
+		},
+		{
+		"name": "Ethics"
+		},
+		{
+		"name": "Evidence"
+		},
+		{
+		"name": "Family Law"
+		},
+		{
+		"name": "Forensic Science"
+		},
+		{
+		"name": "Health Law"
+		},
+		{
+		"name": "Housing & Urban Development"
+		},
+		{
+		"name": "Human Rights Law"
+		},
+		{
+		"name": "Humour"
+		},
+		{
+		"name": "Immigration Law"
+		},
+		{
+		"name": "Insurance Law"
+		},
+		{
+		"name": "Intellectual Property"
+		},
+		{
+		"name": "International Law"
+		},
+		{
+		"name": "Judges and Courts"
+		},
+		{
+		"name": "Labour and Employment Law"
+		},
+		{
+		"name": "Land Use"
+		},
+		{
+		"name": "Law School & Beyond"
+		},
+		{
+		"name": "Legal History"
+		},
+		{
+		"name": "Legal Profession"
+		},
+		{
+		"name": "Legal Research and Writing"
+		},
+		{
+		"name": "Legal Theory"
+		},
+		{
+		"name": "Maritime Law"
+		},
+		{
+		"name": "Medical Law & Legislation"
+		},
+		{
+		"name": "Mental Health"
+		},
+		{
+		"name": "Natural Resources"
+		},
+		{
+		"name": "Political Science"
+		},
+		{
+		"name": "Privacy Law"
+		},
+		{
+		"name": "Private Investigations"
+		},
+		{
+		"name": "Property Law"
+		},
+		{
+		"name": "Religion and the Law"
+		},
+		{
+		"name": "Remedies"
+		},
+		{
+		"name": "Science & Technology"
+		},
+		{
+		"name": "Secondary School Resources"
+		},
+		{
+		"name": "Social Welfare Law"
+		},
+		{
+		"name": "Taxation"
+		},
+		{
+		"name": "Torts"
+		},
+		{
+		"name": "Transportation Law"
+		},
+		{
+		"name": "Trusts"
+		},
+		{
+		"name": "Women and the Law"
+		}
+	]
+}
